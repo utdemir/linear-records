@@ -1,0 +1,42 @@
+name:                linear-records
+synopsis:            Records supporting safe, pure, in-place updates
+version:             0.0.1.0
+homepage:            https://github.com/utdemir/linear-records
+license:             BSD3
+author:              Utku Demir
+maintainer:          Utku Demir
+copyright:           Utku Demir
+category:            Data
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  exposed-modules:     Data.Record.Linear
+  ghc-options:         -Wall -fno-warn-name-shadowing -O2
+  build-depends:       base >= 4.11 && < 5
+                     , linear-base
+
+test-suite linear-records-tests
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   test
+  main-is:          Main.hs
+  default-language: Haskell2010
+  ghc-options:      -Wall -threaded
+  build-depends:    base >=4.11 && < 5
+                  , linear-records
+                  , linear-base
+                  , hedgehog
+                  , gauge
+
+benchmark linear-records-bench
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   bench
+  main-is:          Main.hs
+  default-language: Haskell2010
+  ghc-options:      -Wall -threaded -O2
+  build-depends:    base >=4.11 && < 5
+                  , linear-records
+                  , linear-base
+                  , gauge
